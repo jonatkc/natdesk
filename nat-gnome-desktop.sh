@@ -7,6 +7,7 @@ sudo apt install nala vim curl git wget neofetch ufw flatpak gnome-software-plug
 
 #add alias to bashrc
 echo -e "####  new alias  #### \n alias nat='sudo nala'\n alias sudo='sudo '\n alias apt='nala'\n alias oldapt='apt'" | tee -a .bashrc
+source .bashrc
 
 #upgrade
 sudo nala upgrade -y
