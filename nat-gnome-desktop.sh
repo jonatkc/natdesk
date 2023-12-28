@@ -8,10 +8,6 @@ sudo apt install nala vim curl git wget neofetch ufw flatpak gnome-software-plug
 #add alias to bashrc
 echo -e "####  new alias  #### \n alias nat='sudo nala'\n alias sudo='sudo '\n alias apt='nala'\n alias oldapt='apt'" | tee -a .bashrc
 
-
-#flathub repo
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
 #upgrade
 sudo nala upgrade -y
 
@@ -22,8 +18,14 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 sudo nala update
 
-sudo nala install brave-browser
+sudo nala install brave-browser -y
 
 
 #unintall bloat w/ nala
 sudo nala purge gnome-games kde-baseapps libreoffice* firefox-esr -y
+
+#flathub repo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+#flatpak apps
+flatpak install com.discordapp.Discord com.mattjakeman.ExtensionManager com.usebottles.bottles com.yubico.yubioath nl.hjdskes.gcolor3 org.libreoffice.LibreOffice -y
