@@ -6,7 +6,8 @@ sudo apt update
 sudo apt install nala vim curl git wget neofetch ufw flatpak gnome-software-plugin-flatpak nextcloud-desktop yubioath-desktop vlc iperf3 neovim htop cifs-utils -y
 
 #add alias to bashrc
-echo -e "####  new alias  #### \n alias nat='sudo nala'\n alias sudo='sudo '\n alias apt='nala'\n alias oldapt='apt'" | tee -a .bashrc
+cp .bash_aliases ~
+cp .tmux.conf ~
 source .bashrc
 
 #upgrade
