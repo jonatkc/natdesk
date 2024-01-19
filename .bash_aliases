@@ -24,3 +24,9 @@ alias storage='du -x -h -d1'
 alias cp='cp -i'	#confirm
 alias rm='rm -i'	#confirm
 alias mv='mv -i'	#confirm
+
+# git
+alias gstat='git status'
+alias gadd='git add'
+alias gpush='git push'
+alias gclone='git clone'
