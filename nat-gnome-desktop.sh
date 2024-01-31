@@ -3,7 +3,7 @@
 sudo apt update
 
 #install utils
-sudo apt install nala vim curl git wget neofetch ufw flatpak gnome-software-plugin-flatpak nextcloud-desktop yubioath-desktop vlc iperf3 neovim htop cifs-utils -y
+sudo apt install nala vim build-essential default-jdk curl git wget neofetch ufw flatpak gnome-software-plugin-flatpak nextcloud-desktop yubioath-desktop vlc iperf3 neovim htop cifs-utils -y
 
 #add alias to bashrc
 cp .bash_aliases ~
