@@ -26,7 +26,9 @@ alias rm='rm -i'	#confirm
 alias mv='mv -i'	#confirm
 
 # git
-alias gstat='git status'
+alias gs='git status'
 alias gadd='git add'
 alias gpush='git push'
 alias gclone='git clone'
+
+# variables
