@@ -3,7 +3,7 @@
 sudo apt update
 
 #install utils
-sudo apt install nala vim build-essential default-jdk curl wget neofetch ufw flatpak gnome-software-plugin-flatpak nextcloud-desktop yubioath-desktop vlc iperf3 neovim htop cifs-utils -y
+sudo apt install nala vim build-essential default-jdk curl wget neofetch ufw flatpak nextcloud-desktop yubioath-desktop vlc iperf3 neovim htop cifs-utils -y
 
 #add alias to bashrc
 cp .bash_aliases ~
@@ -30,4 +30,12 @@ sudo nala purge gnome-games kde-baseapps libreoffice* firefox-esr -y
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 #flatpak apps
-flatpak install com.discordapp.Discord com.mattjakeman.ExtensionManager com.usebottles.bottles com.yubico.yubioath nl.hjdskes.gcolor3 org.libreoffice.LibreOffice -y
+flatpak install com.discordapp.Discord com.yubico.yubioath nl.hjdskes.gcolor3 org.libreoffice.LibreOffice -y
+
+# gnome-desktop
+# sudo nala install gnome-software-plugin-flatpak 
+# flatpak install com.mattjakeman.ExtensionManager 
+
+# kde
+
+#xfce
