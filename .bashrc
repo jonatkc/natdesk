@@ -119,5 +119,5 @@ fi
 GREEN="\e[1;32m"
 BLUE="\e[1;34m"
 NC='\033[0m'
-export PS1="${BLUE}[\w]${BLUE} ❱${NC} "
+export PS1="${GREEN}\h${BLUE}[\w]$ ❱${NC} "
 export PROMPT_DIRTRIM=2
