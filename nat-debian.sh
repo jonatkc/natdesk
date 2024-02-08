@@ -8,8 +8,6 @@ sudo apt install nala
 
 # install utils
 sudo nala install vim curl wget neofetch ufw flatpak vlc iperf3 neovim htop btop cifs-utils -y
-# non essential 
-# sudo nala install nextcloud-desktop yubioath-desktop
 
 # add alias to bashrc
 cp .bash_aliases ~
@@ -20,14 +18,11 @@ source .bashrc
 # upgrade
 sudo nala upgrade -y
 
-# brave
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+##### brave #####
+#sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list && sudo nala update && sudo nala install brave-browser -y
 
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-
-sudo nala update
-
-sudo nala install brave-browser -y
+##### non essential  #####
+# sudo nala install nextcloud-desktop yubioath-desktop
 
 ##### Development #####
 # sudo nala install build-essential default-jdk
