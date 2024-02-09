@@ -27,9 +27,6 @@ sudo nala upgrade -y
 ##### Development #####
 # sudo nala install build-essential default-jdk -y
 
-# unintall bloat w/ nala
-# sudo nala purge libreoffice* firefox-esr -y
-
 ########## flathub repo ##########
 #flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ########## apps ##########
@@ -40,7 +37,8 @@ sudo nala upgrade -y
 
 ##### gnome-desktop #####
 # sudo nala install gnome-software-plugin-flatpak; flatpak install com.mattjakeman.ExtensionManager -y
-# sudo nala purge gnome-games -y
+######  unintall bloat w/ nala ##### 
+# sudo nala purge gnome-games libreoffice* firefox-esr -y
 
 ##### kde #####
 # sudo nala install plasma-discover-backend-flatpak -y
