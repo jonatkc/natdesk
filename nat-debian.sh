@@ -22,10 +22,10 @@ sudo nala upgrade -y
 #sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list && sudo nala update && sudo nala install brave-browser -y
 
 ##### non essential  #####
-# sudo nala install nextcloud-desktop yubioath-desktop
+# sudo nala install nextcloud-desktop yubioath-desktop -y
 
 ##### Development #####
-# sudo nala install build-essential default-jdk
+# sudo nala install build-essential default-jdk -y
 
 # unintall bloat w/ nala
 # sudo nala purge libreoffice* firefox-esr -y
@@ -39,11 +39,11 @@ sudo nala upgrade -y
 ########## DE specific ##########
 
 ##### gnome-desktop #####
-# sudo nala install gnome-software-plugin-flatpak; flatpak install com.mattjakeman.ExtensionManager 
-# sudo nala purge gnome-games
+# sudo nala install gnome-software-plugin-flatpak; flatpak install com.mattjakeman.ExtensionManager -y
+# sudo nala purge gnome-games -y
 
 ##### kde #####
-# sudo nala install plasma-discover-backend-flatpak 
-# sudo nala purge kde-baseapps
+# sudo nala install plasma-discover-backend-flatpak -y
+# sudo nala purge kde-baseapps -y
 
 ##### xfce #####
