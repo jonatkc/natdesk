@@ -13,9 +13,10 @@ alias sv='sudo vim'
 # folder alias
 alias ..='cd ..'
 alias cd2='cd ../..'
-alias cd3='cd ../../..'
-alias cd4='cd ../../../..'
 alias back='cd -'
+alias la='ls -A'
+alias lt='ls -ltA'
+alias ll='ls -l'
 
 # storage
 alias storage='du -x -h -d1'
