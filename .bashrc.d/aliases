@@ -1,10 +1,6 @@
-
 # Commands
-alias nat='sudo nala'
-alias upall='sudo nala upgrade -y && flatpak upgrade -y'
-alias apt='\nala'
-alias nala='sudo nala'
-alias oldapt='\apt'
+alias dnf='sudo dnf'
+alias upall='sudo dnf upgrade -y && flatpak upgrade -y'
 alias sudo='sudo '
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias v='vim'
@@ -13,11 +9,12 @@ alias rl='source ~/.bashrc'
 
 # folder alias
 alias ..='cd ..'
-alias cd2='cd ../..'
 alias back='cd -'
-alias la='ls -A'
-alias lt='ls -ltA'
-alias ll='ls -l'
+alias ls='ls --color=auto --group-directories-first'
+alias la='ls  --color=auto --group-directories-first -a'
+alias ll='ls  --color=auto --group-directories-first -l'
+alias lla='ls  --color=auto --group-directories-first -lA'
+alias lt='ls  --color=auto --group-directories-first -ltA'
 
 # storage
 alias storage='du -x -h -d1'
@@ -32,5 +29,5 @@ alias gs='git status'
 alias ga='git add'
 alias gpush='git push'
 alias gclone='git clone'
-
+alias glazy='git add -A && git commit -m "update" && git push'
 # variables
