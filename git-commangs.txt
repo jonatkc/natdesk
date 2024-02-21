@@ -1,0 +1,5 @@
+#### config ####
+git config --[global or local] credential.helper cache
+
+#### set PAT ####
+git remote set-url origin https://[PAT TOKEN]@github.com/[username]/[repo]
