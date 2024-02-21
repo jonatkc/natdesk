@@ -1,6 +1,11 @@
 #!/bin/bash
 
-sudo dnf install gcc-c++ chromium-browser java-devel neofetch neovim clang gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
+#### essentials ####
+sudo dnf install zoxide chromium-browser neofetch neovim gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
 sudo dnf upgrade -y
-sudo dnf remove firefox -y
-flatpak install discord extensionmanager nextcloud firefox steam -y
+
+#### developer settings ####
+# sudo dnf install gcc-c++ java-devel clang -y
+#### optional ####
+# sudo dnf remove firefox -y
+# flatpak install discord extensionmanager nextcloud firefox steam -y
