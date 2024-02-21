@@ -5,7 +5,7 @@ sudo dnf install zoxide chromium.x86_64 neofetch neovim gnome-shell-extension-po
 sudo dnf upgrade -y
 
 #### developer settings ####
-# sudo dnf install make automake gcc gcc-c++ java-devel kernel-devel -y
+# sudo dnf install make gdb automake gcc gcc-c++ java-devel kernel-devel -y
 #### optional ####
 # sudo dnf remove firefox -y
 # flatpak install discord extensionmanager nextcloud firefox steam -y
