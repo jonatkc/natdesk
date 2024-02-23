@@ -18,6 +18,8 @@ alias back='cd -'
 alias la='ls -A'
 alias lt='ls -ltA'
 alias ll='ls -l'
+alias l='ls'
+alias t='tree' 
 
 # storage
 alias storage='du -x -h -d1'

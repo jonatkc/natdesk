@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #### essentials ####
-sudo dnf install zoxide chromium.x86_64 neofetch neovim gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
+sudo dnf install zoxide tree chromium.x86_64 neofetch neovim gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
 sudo dnf upgrade -y
 
 #### developer settings ####

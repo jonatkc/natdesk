@@ -7,7 +7,7 @@ sudo apt install nala
 ########## Minimal install ##########
 
 # install utils
-sudo nala install vim curl wget neofetch ufw flatpak vlc neovim htop btop cifs-utils -y
+sudo nala install tree vim curl wget neofetch ufw flatpak vlc neovim htop btop cifs-utils -y
 
 # add alias to bashrc
 cp .bash_aliases ~
