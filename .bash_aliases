@@ -36,3 +36,10 @@ alias gpush='git push'
 alias gclone='git clone'
 
 # variables
+
+# zoxide
+eval "$(zoxide init bash)"
+
+# Bind Ctrl+F to fzf
+source /usr/share/fzf/shell/key-bindings.bash
+bind -x '"\C-f": "$(command -v fzf)";'
