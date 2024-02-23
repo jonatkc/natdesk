@@ -12,9 +12,10 @@ alias sv='sudo vim'
 alias rl='source ~/.bashrc'
 
 # folder alias
-alias ..='cd ..'
-alias cd2='cd ../..'
-alias back='cd -'
+alias cd='\z'
+alias ..='z ..'
+alias z2='z ../..'
+alias back='z -'
 alias la='ls -A'
 alias lt='ls -ltA'
 alias ll='ls -l'
@@ -41,5 +42,5 @@ alias gclone='git clone'
 eval "$(zoxide init bash)"
 
 # Bind Ctrl+F to fzf
-source /usr/share/fzf/shell/key-bindings.bash
+source /usr/share/doc/fzf/examples/key-bindings.bash
 bind -x '"\C-f": "$(command -v fzf)";'
