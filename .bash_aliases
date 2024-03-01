@@ -21,6 +21,9 @@ alias lt='ls -ltA'
 alias ll='ls -l'
 alias l='ls'
 alias t='tree' 
+alias t1='tree -L 1'
+alias t2='tree -L 2'
+alias t3='tree -L 3'
 
 # storage
 alias storage='du -x -h -d1'
@@ -42,5 +45,5 @@ alias gclone='git clone'
 eval "$(zoxide init bash)"
 
 # Bind Ctrl+F to fzf
-source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/fzf/shell/key-bindings.bash
 bind -x '"\C-f": "$(command -v fzf)";'

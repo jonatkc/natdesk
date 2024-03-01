@@ -1,25 +1,34 @@
 " Set compatability to Vim only 
 " set nocompatible 
+call plug#begin('~/.vim/plugged')
 
-" Use mouse
-set mouse=a
+Plug 'junegunn/fzf.vim'
 
-" Show line numbers
-set number
+call plug#end()
 
-" #### File Handling
+syntax on 
+syntax enable
+set mouse=a               " Use mouse
+set number                " Show line numbers
+set laststatus=2          " Status bar
+set tabstop=2 expandtab   " Set tab to space
+
+" File Handling
 set nocompatible
-set wildmenu 
+set wildmenu              " enable tab auto complete 
+set path+=**              " Look into sub directories
 
-" #### Built in Vim file tree
+" Built in Vim file tree
 inoremap <c-f> <Esc>:Lex<cr>:vertical resize 30<cr>
 nnoremap <c-f> <Esc>:Lex<cr>:vertical resize 30<cr>
 
-" #### Look into sub directories
-set path+=**
+" #### Moving through buffers
+nnoremap n :bnext<cr>
+nnoremap bp :bp<cr>
+
+" #### FZF Plugin
+nnoremap <c-g> :Files<cr>
 
 " Show relative line numbers
 "set relativenumber
 
-" Status bar
-" set laststatus=2
