@@ -12,10 +12,6 @@ alias sv='sudo vim'
 alias rl='source ~/.bashrc'
 
 # folder alias
-alias cd='\z'
-alias ..='z ..'
-alias z2='z ../..'
-alias back='z -'
 alias la='ls -A'
 alias lt='ls -ltA'
 alias ll='ls -l'
@@ -29,9 +25,9 @@ alias t3='tree -L 3'
 alias storage='du -x -h -d1'
 
 # File Handling 
-alias cp='cp -i'	#confirm
-alias rm='rm -i'	#confirm
-alias mv='mv -i'	#confirm
+#alias cp='cp -i'	#confirm
+alias rm='rm -r'	#confirm
+#alias mv='mv -i'	#confirm
 
 # git
 alias gs='git status'
