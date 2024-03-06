@@ -41,5 +41,5 @@ alias gclone='git clone'
 eval "$(zoxide init bash)"
 
 # Bind Ctrl+F to fzf
-source /usr/share/fzf/shell/key-bindings.bash
+source /usr/share/doc/fzf/examples/key-bindings.bash
 bind -x '"\C-f": "$(command -v fzf)";'
