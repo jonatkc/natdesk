@@ -33,7 +33,7 @@ sudo nala upgrade -y
 ########## flathub repo ##########
 #flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ########## apps ##########
-#flatpak install com.discordapp.Discord com.yubico.yubioath nl.hjdskes.gcolor3 org.libreoffice.LibreOffice -y
+#flatpak install com.discordapp.Discord com.yubico.yubioath nl.hjdskes.gcolor3 org.libreoffice.LibreOffice io.github.alainm23.planify -y
 
 
 ########## DE specific ##########
