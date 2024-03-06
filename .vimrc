@@ -2,7 +2,6 @@
 " set nocompatible 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
@@ -24,11 +23,12 @@ inoremap <c-f> <Esc>:Lex<cr>:vertical resize 30<cr>
 nnoremap <c-f> <Esc>:Lex<cr>:vertical resize 30<cr>
 
 " #### Moving through buffers
-nnoremap n :bnext<cr>
+nnoremap bn :bnext<cr>
 nnoremap bp :bp<cr>
 
 " #### FZF Plugin
 nnoremap <c-g> :Files<cr>
+nnoremap <c-\> :Buffers<cr>
 
 " Show relative line numbers
 "set relativenumber
