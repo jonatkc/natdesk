@@ -11,6 +11,12 @@ cp -r .bashrc.d ~
 # Vim Plug
 # curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+#Nvim Plug
+#sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+# Tmux Plugin
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 #### developer settings ####
 # sudo dnf install make gdb automake gcc gcc-c++ java-devel kernel-devel -y
 #### optional ####

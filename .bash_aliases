@@ -9,6 +9,7 @@ alias sudo='sudo '
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias v='vim'
 alias sv='sudo vim'
+alias nv='nvim'
 alias rl='source ~/.bashrc'
 
 # folder alias
