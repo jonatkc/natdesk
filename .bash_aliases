@@ -44,3 +44,6 @@ eval "$(zoxide init bash)"
 # Bind Ctrl+F to fzf
 source /usr/share/doc/fzf/examples/key-bindings.bash
 bind -x '"\C-f": "$(command -v fzf)";'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
