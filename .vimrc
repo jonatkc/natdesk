@@ -19,6 +19,7 @@ set tabstop=2 expandtab   " Set tab to space
 
 " status bar config
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='deus'
 
 " File Handling
 set nocompatible
