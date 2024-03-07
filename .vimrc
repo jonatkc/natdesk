@@ -3,6 +3,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/vim-airline/vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -12,6 +14,8 @@ set mouse=a               " Use mouse
 set number                " Show line numbers
 set laststatus=2          " Status bar
 set tabstop=2 expandtab   " Set tab to space
+" status bar config
+let g:airline#extensions#tabline#enabled = 1
 
 " File Handling
 set nocompatible
@@ -24,11 +28,11 @@ nnoremap <c-f> <Esc>:Lex<cr>:vertical resize 30<cr>
 
 " #### Moving through buffers
 nnoremap bn :bnext<cr>
-nnoremap bp :bp<cr>
+nnoremap bp :bprevious<cr>
 
 " #### FZF Plugin
 nnoremap <c-g> :Files<cr>
-nnoremap <c-\> :Buffers<cr>
+nnoremap gb :Buffers<cr>
 
 " Show relative line numbers
 "set relativenumber
