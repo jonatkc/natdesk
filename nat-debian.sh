@@ -10,9 +10,9 @@ sudo apt install nala
 sudo nala install zoxide fzf tree tmux vim curl wget neofetch ufw flatpak vlc neovim htop btop cifs-utils -y
 
 # add alias to bashrc
-cp .bash_aliases ~
-cp .tmux.conf ~
-cp .vimrc ~
+cp .config/.bash_aliases ~
+cp .config/.tmux.conf ~
+cp .config/.vimrc ~
 source .bashrc
 
 # upgrade
