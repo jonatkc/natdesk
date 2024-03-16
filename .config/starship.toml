@@ -46,7 +46,7 @@ format = "$all_status$ahead_behind"
 
 [hostname]
 ssh_only = false
-format = "<[$hostname]($style)>"
+format = "[$hostname]($style) in "
 trim_at = "-"
 style = "bold dimmed white"
 disabled = true

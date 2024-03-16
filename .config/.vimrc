@@ -27,6 +27,10 @@ set mouse=a               " Use mouse
 set number                " Show line numbers
 set laststatus=2          " Status bar
 set tabstop=2 expandtab   " Set tab to space
+set shiftwidth=2          " Set auto spacing
+" set clipboard=unnamedplus " copy pasta
+" set clipboard=unnamed
+" nnoremap <F8> :.!xclip -selection clipboard <cr>
 
 """"""""""""""""""""""""""
 "   status bar config    "
@@ -61,3 +65,10 @@ nnoremap gb :Buffers<cr>
 
 
 "set relativenumber           " Show relative line numbers
+
+" Map F8 to copy the current line to the clipboard
+map <F8> :.!xclip -selection clipboard<CR>
+
+" Map Shift+F8 to paste text from the clipboard
+map <S-F8> :r !xclip -o -selection clipboard<CR>
+
