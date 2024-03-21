@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
   use 'tpope/vim-fugitive'
+  use 'christoomey/vim-tmux-navigator'
   use 'shaunsingh/nord.nvim'    -- theme
   use 'ThePrimeagen/vim-be-good'
   use {
