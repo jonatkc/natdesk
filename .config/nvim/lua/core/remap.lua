@@ -4,7 +4,7 @@ vim.g.maplocalleader= ' '
 
 -- Basic Config
 vim.opt.backspace = '2'
-vim.opt.mouse = a
+vim.opt.mouse = "a"
 vim.opt.autoread = true
 --vim.opt.cursorline = true
 vim.opt.laststatus = 2

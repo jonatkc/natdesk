@@ -14,8 +14,12 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'junegunn/fzf.vim' 
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
+ -- use 'vim-airline/vim-airline'
+  --use 'vim-airline/vim-airline-themes'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
   use 'tpope/vim-fugitive'
   use 'shaunsingh/nord.nvim'    -- theme
   use 'ThePrimeagen/vim-be-good'
