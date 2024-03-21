@@ -8,6 +8,7 @@ vim.opt.mouse = a
 vim.opt.autoread = true
 --vim.opt.cursorline = true
 vim.opt.laststatus = 2
+vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.showcmd = true
 vim.opt.showtabline=2
