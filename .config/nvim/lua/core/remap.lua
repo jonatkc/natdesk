@@ -6,6 +6,7 @@ vim.g.maplocalleader= ' '
 vim.opt.backspace = '2'
 vim.opt.mouse = "a"
 vim.opt.autoread = true
+
 --vim.opt.cursorline = true
 vim.opt.laststatus = 2
 vim.opt.nu = true
@@ -19,10 +20,25 @@ vim.opt.wildmenu = true              -- enable tab auto complete
 --vim.opt.path:append '**'      -- Look into sub directories
 
 -- Use space instead of tabs
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.shiftround = true
+
+-- Vim no swp (backup) & Long Undos
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+-- Vim Scroll offset
+vim.opt.scrolloff = 8 
+
+-- Fun Visual up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Clear Search
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
@@ -43,3 +59,20 @@ vim.keymap.set('n', '<F8>', ':.!xclip -selection clipboard<CR>')
 
 -- Map Shift+F8 to paste text from the clipboard
 vim.keymap.set('n', '<S-F8>', ':.!xclip -selection clipboard<CR>')
+
+-- greatest remap ever
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+-- Easy Replace
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Vim-Test
+vim.keymap.set('n', '<leader>t', ':TestNearest<CR>')
+vim.keymap.set('n', '<leader>T', ':TestFile<CR>')
+vim.keymap.set('n', '<leader>a', ':TestSuite<CR>')
+vim.keymap.set('n', '<leader>l', ':TestLast<CR>')
+vim.keymap.set('n', '<leader>g', ':TestVisit<CR>')

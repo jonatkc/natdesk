@@ -14,8 +14,6 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'junegunn/fzf.vim' 
- -- use 'vim-airline/vim-airline'
-  --use 'vim-airline/vim-airline-themes'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -30,9 +28,10 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use ('nvim-treesitter/playground')
+  use 'nvim-treesitter/playground'
   use 'ThePrimeagen/harpoon'
   use 'mbbill/undotree'
+  use 'vim-test/vim-test'
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',

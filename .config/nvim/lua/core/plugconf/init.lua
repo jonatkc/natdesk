@@ -7,4 +7,4 @@ require("core.plugconf.treesitter")
 require("core.plugconf.harpoon")
 require("core.plugconf.lsp")
 require("core.plugconf.lualine")
-
+require("core.plugconf.undotree")
