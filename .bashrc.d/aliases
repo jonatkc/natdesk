@@ -20,8 +20,8 @@ alias ll='ls  --color=auto --group-directories-first -l'
 alias lla='ls  --color=auto --group-directories-first -lA'
 alias lt='ls  --color=auto --group-directories-first -ltA'
 alias l='ls  --color=auto --group-directories-first -ltA'
-alias t="tree -L 1 -a -I '.git'"
 alias tt="tree -a -I '.git'"
+alias t="tree -L 1 -a -I '.git'"
 alias t1='tree -L 1'
 alias t2='tree -L 2'
 alias t3='tree -L 3'
@@ -44,6 +44,7 @@ alias gc='git commit -am'
 alias gpush='git push'
 alias gclone='git clone'
 alias glazy='git add -A && git commit -m "update" && git push'
+alias gitac='git add -A && git commit -am'
 # variables
 
 # zoxide
@@ -60,5 +61,4 @@ alias jc='javac *.java'
 alias jr='rm *.class'
 
 # C
-alias gcc='gcc -o -g'
 alias cr='rm *.out'
