@@ -1,6 +1,6 @@
 -- Leader Key
 vim.g.mapleader= ' '
-vim.g.maplocalleader= ' '
+--vim.g.maplocalleader= ' '
 
 -- Basic Config
 vim.opt.backspace = '2'
@@ -35,6 +35,15 @@ vim.opt.undofile = true
 
 -- Vim Scroll offset
 vim.opt.scrolloff = 8 
+
+-- Remap Ctrl+hjkl in insert mode
+vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-j>', '<Down>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-k>', '<Up>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', { noremap = true })
+
+-- quick save
+vim.keymap.set("n", "<leader>w", ":w<cr>")
 
 -- Fun Visual up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
