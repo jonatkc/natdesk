@@ -36,6 +36,9 @@ vim.opt.undofile = true
 -- Vim Scroll offset
 vim.opt.scrolloff = 8 
 
+-- C compile
+vim.keymap.set('n', '<leader>gcc', ':! gcc')
+
 -- Remap Ctrl+hjkl in insert mode
 vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', { noremap = true })
 vim.api.nvim_set_keymap('i', '<C-j>', '<Down>', { noremap = true })

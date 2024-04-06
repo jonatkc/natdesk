@@ -33,6 +33,13 @@ return require('packer').startup(function(use)
   use 'mbbill/undotree'
   use 'vim-test/vim-test'
   use {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = function()
+          require("nvim-autopairs").setup {}
+      end
+  }
+  use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     requires = {
