@@ -1,6 +1,6 @@
 --Lua:
 function ColorMyTerminal(color)
-  color = color or "catppuccin"
+  color = color or "nord"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(1,"Normal", {bg = "none"})

@@ -60,6 +60,7 @@ vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- " Built in Vim file tree "
 vim.keymap.set('n', '<leader>l', ':Lex<cr>:vertical resize 30<cr>')
+vim.keymap.set('i', '<leader>l', ':Lex<cr>:vertical resize 30<cr>')
 
 -- " Moving through buffers "
 vim.keymap.set('n', '<TAB>', ':bnext<CR>')

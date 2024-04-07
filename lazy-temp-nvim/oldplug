@@ -21,9 +21,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'christoomey/vim-tmux-navigator'
   use 'shaunsingh/nord.nvim'    -- theme
-  use 'rose-pine/neovim'
-  use 'catppuccin/nvim'
-  use 'folke/tokyonight.nvim'
   use 'ThePrimeagen/vim-be-good'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',

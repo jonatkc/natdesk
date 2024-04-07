@@ -1,0 +1,66 @@
+return {
+    {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        config = function()
+            require('lsp-zero')
+            require('lspconfig').intelephense.setup({})
+        end
+    },
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require('mason-lspconfig').setup({
+                ensure_installed = {'tsserver', 'rust_analyzer'},
+            })
+        end
+    },
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.lua.setup({})
+        end
+    },
+    {
+        'hrsh7th/cmp-nvim-lsp'
+    },
+    {
+        'hrsh7th/nvim-cmp',
+        config = function()
+            local cmp = require('cmp')
+            local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+            -- this is the function that loads the extra snippets to luasnip
+            -- from rafamadriz/friendly-snippets
+            require('luasnip.loaders.from_vscode').lazy_load()
+
+            cmp.setup({
+                sources = {
+                    {name = 'path'},
+                    {name = 'nvim_lsp'},
+                    {name = 'nvim_lua'},
+                    {name = 'luasnip', keyword_length = 2},
+                    {name = 'buffer', keyword_length = 3},
+                },
+                formatting = require('lsp_zero').cmp_format({details = false}),
+                mapping = {
+                    ['<S-TAB>'] = cmp.mapping.select_prev_item(cmp_select),
+                    ['<TAB>'] = cmp.mapping.select_next_item(cmp_select),
+                    ['<ENTER>'] = cmp.mapping.confirm({ select = true }),
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                },
+            })
+        end
+    },
+    {
+        'L3MON4D3/LuaSnip'
+    }
+}
+
