@@ -1,6 +1,19 @@
-require("core.remap")
-require("core.plugins")
-require("core.plugconf.init")
+-- Leader Key
+vim.g.mapleader= ' '
+--vim.g.maplocalleader= ' '
 
--- Remap Ctrl+Backspace in insert mode to delete previous word
---vim.keymap.set('i', '<ALT-BS>', '<C-w>', { noremap = true })
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins")
+require("remap")
