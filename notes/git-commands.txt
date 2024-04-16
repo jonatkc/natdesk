@@ -3,3 +3,6 @@ git config --[global or local] credential.helper cache
 
 #### set PAT ####
 git remote set-url origin https://[PAT TOKEN]@github.com/[username]/[repo]
+
+### use a specific ssh file####
+GIT_SSH_COMMAND='ssh -i private_key_file -o IdentitiesOnly=yes' git clone user@host:repo.git
