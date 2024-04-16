@@ -20,9 +20,9 @@ vim.opt.wildmenu = true -- enable tab auto complete
 --vim.opt.path:append '**'      -- Look into sub directories
 
 -- Use space instead of tabs
---vim.opt.tabstop = 4
---vim.opt.softtabstop = 4
---vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.shiftround = true
@@ -60,7 +60,6 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- " Built in Vim file tree "
 vim.keymap.set("n", "<leader>l", ":Lex<cr>:vertical resize 30<cr>")
-vim.keymap.set("i", "<leader>l", ":Lex<cr>:vertical resize 30<cr>")
 
 -- " Moving through buffers "
 vim.keymap.set("n", "<TAB>", ":bnext<CR>")
@@ -81,13 +80,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Easy Replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Vim-Test
-vim.keymap.set("n", "<leader>t", ":TestNearest<CR>")
-vim.keymap.set("n", "<leader>T", ":TestFile<CR>")
-vim.keymap.set("n", "<leader>a", ":TestSuite<CR>")
-vim.keymap.set("n", "<leader>l", ":TestLast<CR>")
-vim.keymap.set("n", "<leader>g", ":TestVisit<CR>")
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
