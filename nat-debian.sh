@@ -18,6 +18,9 @@ source .bashrc
 # upgrade
 sudo nala upgrade -y
 
+# NVIM install
+# sudo apt-get install ninja-build gettext cmake unzip curl build-essential
+
 # Vim Plug
 #curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
