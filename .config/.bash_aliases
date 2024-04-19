@@ -27,23 +27,42 @@ alias t3='tree -L 3'
 alias storage='du -x -h -d1'
 
 # File Handling 
+alias rm='rm -r'
+alias cp='cp -r'
 #alias cp='cp -i'	#confirm
-alias rm='rm -r'	#confirm
+#alias rm='rm -i'	#confirm
 #alias mv='mv -i'	#confirm
 
 # git
 alias gs='git status'
 alias ga='git add'
+alias gA='git add -A'
+alias gc='git commit -am'
 alias gpush='git push'
 alias gclone='git clone'
-
+alias glazy='git add -A && git commit -m "update" && git push'
+alias gitac='git add -A && git commit -am'
 # variables
 
 # zoxide
 eval "$(zoxide init bash)"
 
 # Bind Ctrl+F to fzf
-source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/fzf/shell/key-bindings.bash
 bind -x '"\C-f": "$(command -v fzf)";'
 
 export FZF_DEFAULT_COMMAND='find .'
+
+# Java
+alias jc='javac *.java'
+alias jr='rm *.class'
+
+# C
+alias c17='g++ --std=c++17'
+alias cr='rm *.out'
+
+# FZF tmux
+bind -x '"\C-f": ~/.local/bin/tmux-sessionizer'
+
+# Exports
+export EDITOR='nvim'
