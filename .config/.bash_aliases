@@ -48,7 +48,7 @@ alias gitac='git add -A && git commit -am'
 eval "$(zoxide init bash)"
 
 # Bind Ctrl+F to fzf
-source /usr/share/fzf/shell/key-bindings.bash
+source /usr/share/doc/fzf/examples/key-bindings.bash
 bind -x '"\C-f": "$(command -v fzf)";'
 
 export FZF_DEFAULT_COMMAND='find .'

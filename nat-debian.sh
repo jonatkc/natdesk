@@ -13,7 +13,8 @@ sudo nala install zoxide fzf tree tmux vim curl wget neofetch ufw flatpak vlc ne
 cp .config/.bash_aliases ~
 cp .config/.tmux.conf ~
 cp .config/.vimrc ~
-source .bashrc
+# cp -r .config/nvim ~
+source ~/.bashrc
 
 # upgrade
 sudo nala upgrade -y
