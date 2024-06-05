@@ -62,3 +62,7 @@ alias jr='rm *.class'
 
 # C
 alias cr='rm *.out'
+
+# Make
+alias mc='make clean'
+alias m="make"

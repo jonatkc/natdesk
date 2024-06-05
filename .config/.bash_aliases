@@ -61,6 +61,9 @@ alias jr='rm *.class'
 alias c17='g++ --std=c++17'
 alias cr='rm *.out'
 
+# Make 
+alias mc='make clean'
+
 # FZF tmux
 bind -x '"\C-f": ~/.local/bin/tmux-sessionizer'
 
