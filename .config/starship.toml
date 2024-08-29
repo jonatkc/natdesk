@@ -85,3 +85,12 @@ show_always = true
 
 [nodejs]
 format = "via [🤖 $version](bold green) "
+ 
+[os]
+format = "on [$symbol ]($style)"
+style = "bold blue"
+disabled = false
+
+[os.symbols]
+Windows = " "
+
