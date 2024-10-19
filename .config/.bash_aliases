@@ -69,3 +69,7 @@ bind -x '"\C-f": ~/.local/bin/tmux-sessionizer'
 
 # Exports
 export EDITOR='nvim'
+eval "$(starship init bash)"
+
+export XCURSOR_SIZE=16
+

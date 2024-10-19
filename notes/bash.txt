@@ -1,0 +1,6 @@
+# pause history
+    set +o history
+# start history
+    set -o history
+# clear history
+    histroy -c
