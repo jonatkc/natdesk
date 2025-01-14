@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #### essentials ####
-sudo dnf install zoxide tree chromium.x86_64 neofetch vim neovim gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
+sudo dnf install zoxide tree fastfetch vim neovim gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
 sudo dnf upgrade -y
 
 cp .config/.tmux.conf ~
@@ -21,7 +21,7 @@ cp -r .config/.bashrc.d ~
 # sudo dnf install make gdb automake gcc gcc-c++ java-devel kernel-devel -y
 #### optional ####
 # sudo dnf remove firefox -y
-# flatpak install discord extensionmanager nextcloud firefox steam io.github.alainm23.planify -y
+# flatpak install discord chromium extensionmanager nextcloud firefox steam io.github.alainm23.planify -y
 
 #### Brave ####
 # sudo dnf install dnf-plugins-core ; sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo ; sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc ; sudo dnf install brave-browser -y
