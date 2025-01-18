@@ -19,9 +19,15 @@ cp -r .config/.bashrc.d ~
 
 #### developer settings ####
 # sudo dnf install make gdb automake gcc gcc-c++ java-devel kernel-devel -y
+
 #### optional ####
 # sudo dnf remove firefox -y
-# flatpak install discord chromium extensionmanager nextcloud firefox steam io.github.alainm23.planify -y
+# flatpak install com.discordapp.Discord \
+#                 com.mattjakeman.ExtensionManager \
+#                 com.nextcloud.desktopclient.nextcloud \
+#                 com.todoist.Todoist \
+#                 com.valvesoftware.Steam \
+#                 com.yubico.yubioath -y
 
 #### Brave ####
 # sudo dnf install dnf-plugins-core ; sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo ; sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc ; sudo dnf install brave-browser -y
