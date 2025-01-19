@@ -4,9 +4,10 @@
 sudo dnf install zoxide tree fastfetch vim neovim gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
 sudo dnf upgrade -y
 
-cp .config/.tmux.conf ~
-cp .config/.vimrc ~
-cp -r .config/.bashrc.d ~
+cp ./dotfiles/ ~
+# cp .config/.tmux.conf ~
+# cp .config/.vimrc ~
+# cp -r .config/.bashrc.d ~
 
 # Vim Plug
 # curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -15,7 +16,7 @@ cp -r .config/.bashrc.d ~
 #sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Tmux Plugin
-# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# git clone https://github.com/tmux-plugins/tpm ~/dotfiles/.tmux/plugins/tpm
 
 #### developer settings ####
 # sudo dnf install make gdb automake gcc gcc-c++ java-devel kernel-devel -y
