@@ -1,0 +1,33 @@
+;; homerow mods
+
+(defcfg
+  process-unmapped-keys yes
+)
+(defsrc
+  a   s   d   f   j   k   l   ;
+)
+(defvar
+  tap-time 200
+  hold-time 200
+)
+(defalias
+  a (tap-hold $tap-time $hold-time a lctl)
+  s (tap-hold $tap-time $hold-time s lsft)
+  d (tap-hold $tap-time $hold-time d lalt)
+  f (tap-hold $tap-time $hold-time f (layer-while-held nlay))
+  j (tap-hold $tap-time $hold-time j (layer-while-held nlay))
+  k (tap-hold $tap-time $hold-time k ralt)
+  l (tap-hold $tap-time $hold-time l rsft)
+  ; (tap-hold $tap-time $hold-time ; rctl)
+)
+(deflayer base
+  @a  @s  @d  @f  @j  @k  @l  @;
+)
+(deflayer (nlay)
+  spc bspc
+  j down
+  k up
+  h left
+  l right
+  m lmet
+)
