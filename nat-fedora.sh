@@ -9,6 +9,8 @@ cp ./dotfiles/ ~
 # cp .config/.vimrc ~
 # cp -r .config/.bashrc.d ~
 
+# gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+
 # Vim Plug
 # curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 

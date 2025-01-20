@@ -17,6 +17,8 @@ cp ./dotfiles/ ~
 # cp -r .config/nvim ~
 source ~/.bashrc
 
+# gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+
 # upgrade
 sudo nala upgrade -y
 
