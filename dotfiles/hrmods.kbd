@@ -1,0 +1,39 @@
+;; Basic home row mods example using QWERTY
+;; For a more complex but perhaps usable configuration,
+;; see home-row-mod-advanced.kbd
+
+(defcfg
+  process-unmapped-keys yes
+)
+(defsrc
+  caps a   s   d   f   j   k   l   ;
+)
+(defvar
+  ;; Note: consider using different time values for your different fingers.
+  ;; For example, your pinkies might be slower to release keys and index
+  ;; fingers faster.
+  tap-time 200
+  hold-time 200
+)
+(defalias
+  caps esc
+  a (tap-hold $tap-time $hold-time a lctl)
+  s (tap-hold $tap-time $hold-time s lsft)
+  d (tap-hold $tap-time $hold-time d lalt)
+  f (tap-hold $tap-time $hold-time f (layer-while-held nlay))
+  j (tap-hold $tap-time $hold-time j (layer-while-held nlay))
+  k (tap-hold $tap-time $hold-time k ralt)
+  l (tap-hold $tap-time $hold-time l rsft)
+  ; (tap-hold $tap-time $hold-time ; rctl)
+)
+(deflayer base
+  @caps @a  @s  @d  @f  @j  @k  @l  @;
+)
+(deflayermap (nlay)
+  h left
+  j down
+  k up
+  l right
+  spc bspc
+  m lmet
+)
