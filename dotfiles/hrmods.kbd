@@ -6,7 +6,7 @@
   process-unmapped-keys yes
 )
 (defsrc
-  caps a   s   d   f   j   k   l   ;
+  caps a   s   d   f   j   k   l   ;  v  m
 )
 (defvar
   ;; Note: consider using different time values for your different fingers.
@@ -25,9 +25,11 @@
   k (tap-hold $tap-time $hold-time k ralt)
   l (tap-hold $tap-time $hold-time l rsft)
   ; (tap-hold $tap-time $hold-time ; rctl)
+  v (tap-hold $tap-time $hold-time v lmet)
+  m (tap-hold $tap-time $hold-time m rmet)
 )
 (deflayer base
-  @caps @a  @s  @d  @f  @j  @k  @l  @;
+  @caps @a  @s  @d  @f  @j  @k  @l  @; @v @m
 )
 (deflayermap (nlay)
   h left
