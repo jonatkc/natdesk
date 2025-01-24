@@ -1,7 +1,7 @@
 # Commands
-alias dnf='sudo dnf'
-alias apt='dnf'
-alias upall='sudo dnf upgrade -y && flatpak upgrade -y'
+alias nala='sudo nala'
+alias apt='nala'
+alias upall='sudo nala upgrade -y && flatpak upgrade -y'
 alias sudo='sudo '
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias v='nvim'
@@ -74,6 +74,6 @@ source /usr/share/fzf/shell/key-bindings.bash
 
 # Exports
 export EDITOR='nvim'
-eval "$(starship init bash)"
+#eval "$(starship init bash)"
 export XCURSOR_SIZE=16
 
