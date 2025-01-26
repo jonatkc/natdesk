@@ -7,10 +7,10 @@ sudo apt install nala
 ########## Minimal install ##########
 
 # install utils
-sudo nala install zoxide fzf tree tmux vim curl wget neofetch ufw flatpak vlc neovim htop btop cifs-utils -y
+sudo nala install stow s-tui zoxide fzf tree tmux vim curl wget neofetch ufw flatpak vlc htop btop cifs-utils -y
 
 # add alias to bashrc
-cp ./dotfiles/ ~
+cp ./dotfiles.d/ ~
 # cp .config/.bash_aliases ~
 # cp .config/.tmux.conf ~
 # cp .config/.vimrc ~
@@ -26,13 +26,13 @@ sudo nala upgrade -y
 # sudo apt-get install ninja-build gettext cmake unzip curl build-essential
 
 # Vim Plug
-#curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#curl -fLo ~/dotfiles.d/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 #Nvim Plug
 #sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 #TMUX Plugin
-# git clone https://github.com/tmux-plugins/tpm ~/dotfiles/.tmux/plugins/tpm
+# git clone https://github.com/tmux-plugins/tpm ~/dotfiles.d/.tmux/plugins/tpm
 
 ##### brave #####
 #sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list && sudo nala update && sudo nala install brave-browser -y
