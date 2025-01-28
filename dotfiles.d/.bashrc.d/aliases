@@ -71,6 +71,7 @@ bind -x '"\C-f": ~/.local/bin/tmux-sessionizer'
 # Bind Ctrl+F to fzf
 # bind -x '"\C-f": "$(command -v fzf)";'
 source /usr/share/fzf/shell/key-bindings.bash
+# source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # Exports
 export EDITOR='nvim'

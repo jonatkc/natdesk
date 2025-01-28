@@ -6,6 +6,7 @@
   process-unmapped-keys yes
 )
 (defsrc
+  1 2 3 4 5
   caps a   s   d   f   j   k   l   ;  v  m
 )
 (defvar
@@ -17,6 +18,11 @@
 )
 (defalias
   caps esc
+  1 (tap-hold 300 300 1 (multi lmet 1))
+  2 (tap-hold 300 300 2 (multi lmet 2))
+  3 (tap-hold 300 300 3 (multi lmet 3))
+  4 (tap-hold 300 300 4 (multi lmet 4))
+  5 (tap-hold 300 300 5 (multi lmet 5))
   a (tap-hold $tap-time $hold-time a lctl)
   s (tap-hold $tap-time $hold-time s lsft)
   d (tap-hold $tap-time $hold-time d lalt)
@@ -29,6 +35,7 @@
   m (tap-hold $tap-time $hold-time m rmet)
 )
 (deflayer base
+  @1 @2 @3 @4 @5
   @caps @a  @s  @d  @f  @j  @k  @l  @; @v @m
 )
 (deflayermap (nlay)

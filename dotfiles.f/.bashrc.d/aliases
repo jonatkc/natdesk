@@ -8,8 +8,10 @@ alias v='nvim'
 alias sv='sudo vim'
 alias nv='nvim'
 alias rl='source ~/.bashrc'
-alias hrm='sudo ~/dotfiles/kanata --cfg ~/dotfiles/hrmods.kbd'
+alias hrm='sudo ~/dotfiles.f/kanata --cfg ~/dotfiles.f/hrmods.kbd'
 alias dotsync='rsync -rvuP /home/natris/dotfiles.f /home/natris/git/natdesk/ --exclude .git'
+# brave not opening
+alias brv='rm ~/.config/BraveSoftware/Brave-Browser/SingletonLock'
 
 # folder alias
 alias cd='\z'
