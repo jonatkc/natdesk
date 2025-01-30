@@ -1,0 +1,20 @@
+---
+- hosts: rpi
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Check if reboot
+
+    - name: package
+      package:
+        name: nala
+        state: present
+
+   # Or you can have these in one line
+   # - name: package
+   #   package: name=nala state=present
+    - name: apt
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 360
