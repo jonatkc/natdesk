@@ -7,7 +7,7 @@ sudo apt install nala
 ########## Minimal install ##########
 
 # install utils
-sudo nala install stow s-tui zoxide fzf tree tmux vim curl wget neofetch ufw flatpak vlc htop btop cifs-utils -y
+sudo nala install xsensors stow s-tui zoxide fzf tree tmux vim curl wget neofetch ufw flatpak vlc htop btop cifs-utils -y
 
 # add alias to bashrc
 cp ./dotfiles.d/ ~
@@ -18,6 +18,10 @@ cp ./dotfiles.d/ ~
 source ~/.bashrc
 
 # gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+# for i in `seq 1 10`; do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"; done
+# gsettings list-recursively | grep -E 'keybindings|media-keys'
+
+
 
 # upgrade
 sudo nala upgrade -y

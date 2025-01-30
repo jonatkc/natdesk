@@ -7,6 +7,12 @@ local plugins = {
 	{ "MunifTanjim/nui.nvim" },
 	{ "catppuccin/nvim" },
 	{ "rose-pine/neovim", name = "rose-pine" },
+	-- code snippets
+	{
+		"michaelrommel/nvim-silicon",
+		lazy = true,
+		command = "silicon",
+	},
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
