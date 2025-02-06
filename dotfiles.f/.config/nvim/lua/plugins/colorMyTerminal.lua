@@ -1,4 +1,4 @@
-----Lua:
+----Lua:color
 --function ColorMyTerminal(color)
 --  color = color or "tokyonight-night"
 --  vim.cmd.colorscheme(color)
@@ -18,7 +18,7 @@ return {
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- load the colorscheme here
-			vim.cmd([[colorscheme catppuccin]])
+			vim.cmd([[colorscheme nord]])
 			vim.api.nvim_set_hl(1, "Normal", { bg = "none" })
 			vim.api.nvim_set_hl(1, "NormalFloat", { bg = "none" })
 		end,

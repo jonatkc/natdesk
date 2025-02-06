@@ -16,15 +16,15 @@ alias brv='rm ~/.config/BraveSoftware/Brave-Browser/SingletonLock'
 # folder alias
 alias cd='\z'
 alias ..='z ..'
-alias back='z -'
+alias back='z -a'
 alias ls='ls --color=auto --group-directories-first'
 alias la='ls  --color=auto --group-directories-first -a'
 alias ll='ls  --color=auto --group-directories-first -l'
 alias lla='ls  --color=auto --group-directories-first -lA'
 alias lt='ls  --color=auto --group-directories-first -ltA'
 alias l='ls  --color=auto --group-directories-first -ltA'
-alias t="tree -L 1 -a -I '.git'"
-alias tt="tree -a -I '.git'"
+alias t="tree --dirsfirst -L 1 -a -I '.git'"
+alias tt="tree --dirsfirst -a -I '.git'"
 alias t1='tree -L 1'
 alias t2='tree -L 2'
 alias t3='tree -L 3'
@@ -54,7 +54,6 @@ alias gitac='git add -A && git commit -am'
 # zoxide
 eval "$(zoxide init bash)"
 
-
 export FZF_DEFAULT_COMMAND='find .'
 
 # Java
@@ -70,6 +69,7 @@ alias mc='make clean'
 
 # FZF tmux
 bind -x '"\C-f": ~/.local/bin/tmux-sessionizer'
+bind -x '"\C-g": ~/.local/bin/nvim-session'
 # Bind Ctrl+F to fzf
 # bind -x '"\C-f": "$(command -v fzf)";'
 source /usr/share/fzf/shell/key-bindings.bash
