@@ -21,16 +21,16 @@ source ~/.bashrc
 # for i in `seq 1 10`; do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"; done
 # gsettings list-recursively | grep -E 'keybindings|media-keys'
 
-
-
 # upgrade
 sudo nala upgrade -y
 
 # NVIM install
-# sudo apt-get install ninja-build gettext cmake unzip curl build-essential -y && \
-# git clone https://github.com/neovim/neovim && \
-# cd neovim && git checkout stable && \
-# make CMAKE_BUILD_TYPE=RelWithDebInfo && cd build && cpack -G DEB && sudo dpkg -i nvim-linux-<arch>.deb
+# sudo apt-get install ninja-build gettext cmake unzip curl build-essential -y 
+# git clone -b stable https://github.com/neovim/neovim $HOME/
+# cd $HOME/neovim 
+# make CMAKE_BUILD_TYPE=RelWithDebInfo 
+# sudo make install
+# cd build && cpack -G DEB && sudo dpkg -i nvim-linux-<arch>.deb
 
 # Vim Plug
 #curl -fLo ~/dotfiles.d/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

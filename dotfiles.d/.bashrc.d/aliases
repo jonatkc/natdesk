@@ -12,10 +12,6 @@ alias hrm='sudo ~/dotfiles/kanata --cfg ~/dotfiles/hrmods.kbd'
 alias dotsync='rsync -rvuP /home/natris/dotfiles /home/natris/git/natdesk/ --exclude .git'
 
 # folder alias
-alias cd='\z'
-alias ..='z ..'
-alias back='z -'
-alias ls='ls --color=auto --group-directories-first'
 alias la='ls  --color=auto --group-directories-first -a'
 alias ll='ls  --color=auto --group-directories-first -l'
 alias lla='ls  --color=auto --group-directories-first -lA'
