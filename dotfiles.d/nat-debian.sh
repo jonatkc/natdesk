@@ -10,7 +10,7 @@ sudo apt install nala
 sudo nala install xsensors stow s-tui zoxide fzf tree tmux vim curl wget neofetch ufw flatpak vlc htop btop cifs-utils -y
 
 # add alias to bashrc
-cp ./dotfiles.d/ ~
+cp dotfiles.d/ ~/dotfiles.d
 # cp .config/.bash_aliases ~
 # cp .config/.tmux.conf ~
 # cp .config/.vimrc ~
@@ -26,7 +26,7 @@ sudo nala upgrade -y
 
 # NVIM install
 # sudo apt-get install ninja-build gettext cmake unzip curl build-essential -y 
-# git clone -b stable https://github.com/neovim/neovim $HOME/
+# git clone https://github.com/neovim/neovim $HOME/neovim
 # cd $HOME/neovim 
 # make CMAKE_BUILD_TYPE=RelWithDebInfo 
 # sudo make install
