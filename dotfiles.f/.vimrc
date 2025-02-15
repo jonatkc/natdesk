@@ -25,6 +25,7 @@ syntax on
 syntax enable
 set mouse=a               " Use mouse
 set number                " Show line numbers
+set relativenumber           " Show relative line numbers
 set laststatus=2          " Status bar
 set tabstop=2 expandtab   " Set tab to space
 set shiftwidth=2          " Set auto spacing
@@ -63,8 +64,6 @@ nnoremap bp :bprevious<cr>
 nnoremap <c-f> :Files<cr>
 nnoremap gb :Buffers<cr>
 
-
-"set relativenumber           " Show relative line numbers
 
 " Map F8 to copy the current line to the clipboard
 map <F8> :.!xclip -selection clipboard<CR>
