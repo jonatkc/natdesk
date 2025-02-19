@@ -20,11 +20,11 @@ vim.opt.wildmenu = true -- enable tab auto complete
 --vim.opt.path:append '**'      -- Look into sub directories
 
 -- Use space instead of tabs
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
-vim.opt.expandtab = true
+vim.opt.expandtab = false --tab to space
 vim.opt.shiftround = true
 
 -- Vim no swp (backup) & Long Undos
@@ -45,6 +45,9 @@ vim.api.nvim_set_keymap("i", "<C-j>", "<Down>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-k>", "<Up>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-l>", "<Right>", { noremap = true })
 
+-- terminal mode
+-- vim.api.nvim_set_keymap("t", "<ESC>", "<C-/><C-n>", { noremap = true })
+
 -- quick save
 vim.keymap.set("n", "<leader>w", ":w<cr>")
 
@@ -64,12 +67,6 @@ vim.keymap.set("n", "<leader>l", ":Lex<cr>:vertical resize 30<cr>")
 -- " Moving through buffers "
 vim.keymap.set("n", "<TAB>", ":bnext<CR>")
 vim.keymap.set("n", "<S-TAB>", ":bprevious<CR>")
-
--- Map F8 to copy the current line to the clipboard
-vim.keymap.set("n", "<F8>", ":.!xclip -selection clipboard<CR>")
-
--- Map Shift+F8 to paste text from the clipboard
-vim.keymap.set("n", "<S-F8>", ":.!xclip -selection clipboard<CR>")
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])

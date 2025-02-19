@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #### essentials ####
-sudo dnf install zoxide tree fastfetch stow s-tui xsensors vim neovim gnome-shell-extension-pop-shell tmux curl htop btop vlc -y
+sudo dnf install zoxide tree fastfetch stow s-tui xsensors vim neovim gnome-shell-extension-pop-shell tmux curl htop btop -y
 sudo dnf upgrade -y
 
 cp ./dotfiles/ ~

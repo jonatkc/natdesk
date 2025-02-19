@@ -21,6 +21,7 @@ call plug#end()
 """"""""""""""""""""""""""
 "     Basic Config       "
 """"""""""""""""""""""""""
+let mapleader = " "
 syntax on 
 syntax enable
 set mouse=a               " Use mouse
@@ -61,9 +62,15 @@ nnoremap bp :bprevious<cr>
 """"""""""""""""""""""""""
 "     FZF Plugin         "
 """"""""""""""""""""""""""
-nnoremap <c-f> :Files<cr>
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>pv :Lex<cr>
 nnoremap gb :Buffers<cr>
 
+" Replace
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+nnoremap <leader>y ["+y]
+nnoremap <leader>Y ["+Y]
 
 " Map F8 to copy the current line to the clipboard
 map <F8> :.!xclip -selection clipboard<CR>
