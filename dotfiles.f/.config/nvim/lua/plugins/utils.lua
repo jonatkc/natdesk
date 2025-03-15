@@ -33,7 +33,7 @@ local plugins = {
 			--callout = { note = { quote_icon = "s" } },
 		},
 	},
-	{ -- install without yarn or npm
+	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },

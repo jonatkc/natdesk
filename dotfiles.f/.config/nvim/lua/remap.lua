@@ -77,6 +77,12 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Easy Replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- markdown macros
+vim.keymap.set("n", "<leader>8", [[viwdi**<ESC>hp]])
+vim.keymap.set("v", "<leader>b", [[di****<ESC>hhp]])
+vim.keymap.set("v", "<leader>bb", 's**<C-r>"<ESC>k$a**<ESC>') -- is a line
+vim.keymap.set("v", "<leader>i", [[di**<ESC>hp]]) -- not a line
+vim.keymap.set("v", "<leader>ii", [[di **<ESC>hhp]])
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -92,3 +98,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- better command line mapping
 vim.api.nvim_set_keymap("n", "<CR>", "<cmd>FineCmdline<CR>", { noremap = true })
+
+-- sed commands
+-- s/parttern/replacement/places
+-- /^$/d  all empty lines
+-- \s is for space
+-- \. is for any character
+-- \* is for any count
+-- \.* any character and any count

@@ -79,3 +79,6 @@ export EDITOR='nvim'
 eval "$(starship init bash)"
 export XCURSOR_SIZE=16
 
+# [ -n "$SSH_CONNECTION" ] && unset SSH_ASKPASS
+# export GIT_ASKPASS=
+unset SSH_ASKPASS

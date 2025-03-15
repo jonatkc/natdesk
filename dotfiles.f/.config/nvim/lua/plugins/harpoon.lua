@@ -3,11 +3,6 @@ local local_harpoon = {
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	--[[
-    {
-		"harpoon",
-		dir = "~/personal/harpoon",
 		config = function()
 			local harpoon = require("harpoon")
 
@@ -46,19 +41,6 @@ local local_harpoon = {
 			end)
 		end,
 	},
-	{
-		"vim-apm",
-		dir = "~/personal/vim-apm",
-		config = function()
-		
-		end,
-	},
-	{
-		"vim-with-me",
-		dir = "~/personal/vim-with-me",
-		config = function() end,
-	},
---]]
 }
 
 return local_harpoon
