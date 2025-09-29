@@ -1,9 +1,7 @@
-@import url('/home/eli/.cache/wal/colors-waybar.css');
-
 @define-color mauve  @color9;
 @define-color red  @color9;
 @define-color lavender  @color7;
-@define-color text  @color7;
+@define-color text  black;
 @keyframes fadeIn {
     0% {
     }
@@ -11,21 +9,12 @@
     }
 }
 
-* {
-    all:unset;
-    font-family: 'CodeNewRoman Nerd Font Mono', monospace;
-    font-size: 18px;
-    outline: none;
-    border: none;
-    text-shadow:none;
-    background-color:transparent;
-}
 
 window {
     all:unset;
     padding: 20px;
     border-radius: 0px;
-    background-color: alpha(@background,.5);
+    background-color: alpha(@background,.8);
 }
 #inner-box {
     margin: 2px;
@@ -92,10 +81,10 @@ window {
 
 }
 #entry:selected {
-    box-shadow: 1px 1px 5px rgba(255,255,255, .03);
+    box-shadow: 1px 1px 5px rgba(255,255,255, .2);
     border: none;
     border-radius: 20px;
-    background-color:transparent;
+    background-color:gray;
 }
 #entry:selected #text {
     color: @mauve;
