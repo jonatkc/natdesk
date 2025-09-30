@@ -51,8 +51,6 @@ alias glazy='git add -A && git commit -m "update" && git push'
 alias gitac='git add -A && git commit -am'
 # variables
 
-# zoxide
-eval "$(zoxide init bash)"
 
 export FZF_DEFAULT_COMMAND='find .'
 
@@ -82,3 +80,6 @@ export XCURSOR_SIZE=16
 # [ -n "$SSH_CONNECTION" ] && unset SSH_ASKPASS
 # export GIT_ASKPASS=
 unset SSH_ASKPASS
+
+# zoxide
+eval "$(zoxide init bash)"

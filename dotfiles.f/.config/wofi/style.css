@@ -1,7 +1,9 @@
-@define-color mauve  @color9;
-@define-color red  @color9;
-@define-color lavender  @color7;
-@define-color text  black;
+@define-color background  #1B3C53;
+@define-color navy  #1B3C53;
+@define-color denim  #456882;
+@define-color beige  #D2C1B6;
+@define-color egg_white  #F9F3EF;
+@define-color text egg_white;
 @keyframes fadeIn {
     0% {
     }
@@ -44,7 +46,7 @@ window {
 }
 #input image {
     border: none;
-    color: @red;
+    color: @denim;
     padding-right:10px;
 }
 #input * {
@@ -77,18 +79,18 @@ window {
 }
 #entry arrow {
     border: none;
-    color: @lavender;
+    color: @beige;
 
 }
 #entry:selected {
     box-shadow: 1px 1px 5px rgba(255,255,255, .2);
     border: none;
     border-radius: 20px;
-    background-color:gray;
+    background-color:@egg_white;
 }
 #entry:selected #text {
-    color: @mauve;
+    color: @navy;
 }
 #entry:drop(active) {
-    background-color: @lavender !important;
+    background-color: @beige !important;
 }
