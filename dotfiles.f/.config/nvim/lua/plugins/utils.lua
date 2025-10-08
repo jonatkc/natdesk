@@ -25,13 +25,20 @@ local plugins = {
 	},
 	-- notes
 	{
+		"echasnovski/mini.nvim",
+		name = "mini.nvim",
+		url = "https://github.com/nvim-mini/mini.nvim",
+	},
+
+	-- render-markdown plugin setup
+	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
-		opts = {
-			--callout = { note = { quote_icon = "s" } },
-		},
+		opts = {},
 	},
 	{
 		"iamcco/markdown-preview.nvim",

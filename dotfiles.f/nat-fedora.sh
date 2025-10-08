@@ -4,7 +4,7 @@
 sudo dnf install zoxide tree fastfetch stow s-tui xsensors vim neovim gnome-shell-extension-pop-shell tmux curl htop btop -y
 sudo dnf upgrade -y
 
-cp ./dotfiles/ ~
+cp ../dotfiles.f/ ~
 # cp .config/.tmux.conf ~
 # cp .config/.vimrc ~
 # cp -r .config/.bashrc.d ~
