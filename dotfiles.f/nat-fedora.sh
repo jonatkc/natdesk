@@ -9,6 +9,8 @@ cp ../dotfiles.f/ ~
 # cp .config/.vimrc ~
 # cp -r .config/.bashrc.d ~
 
+curl -fsS https://dl.brave.com/install.sh | sh
+
 # gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 
 # Vim Plug
