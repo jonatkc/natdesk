@@ -1,0 +1,13 @@
+---
+- hosts: debian
+  tasks:
+    - name: git
+      git:
+        repo: https://github.com/jonatkc/natserver
+        dest: "/home/{{ ansible_env.SUDO_USER | default(ansible_user_id) }}/git/natserver"
+
+    - name: git
+      command: cp -r git/natserver/dotfiles.d "/home/{{ ansible_env.SUDO_USER | default(ansible_user_id) }}" 
+
+    - name: stow
+      command: stow git/natserver/

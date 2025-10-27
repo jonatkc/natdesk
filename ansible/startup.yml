@@ -9,7 +9,7 @@
 
     - name: apt
       apt:
-        upgrade: yes
+        upgrade: yes # yes or dist 
         update_cache: yes
         cache_valid_time: 360
 
@@ -19,7 +19,6 @@
     - name: install package
       package:
         name: 
-        - nala 
         - tree
         - fzf
         - tmux
@@ -29,9 +28,10 @@
         - htop
         - curl 
         - git
-        - docker
+        - kitty
         - docker-compose
         - stow
+        - neovim
+        - xsensors
         state: present
-
 
