@@ -1,437 +1,161 @@
 return {
-	{
-		"neovim/nvim-lspconfig",
-		event = "LazyFile",
-		dependencies = {
-			"mason.nvim",
-			{ "mason-org/mason-lspconfig.nvim", config = function() end },
-		},
-		opts = function()
-			---@class PluginLspOpts
-			local ret = {
-				-- options for vim.diagnostic.config()
-				---@type vim.diagnostic.Opts
-				diagnostics = {
-					underline = true,
-					update_in_insert = false,
-					virtual_text = {
-						spacing = 4,
-						source = "if_many",
-						prefix = "●",
-						-- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-						-- prefix = "icons",
-					},
-					severity_sort = true,
-					signs = {
-						text = {
-							[vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
-							[vim.diagnostic.severity.WARN] = LazyVim.config.icons.diagnostics.Warn,
-							[vim.diagnostic.severity.HINT] = LazyVim.config.icons.diagnostics.Hint,
-							[vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
-						},
-					},
-				},
-				-- Enable this to enable the builtin LSP inlay hints on Neovim.
-				-- Be aware that you also will need to properly configure your LSP server to
-				-- provide the inlay hints.
-				inlay_hints = {
-					enabled = true,
-					exclude = { "vue" }, -- filetypes for which you don't want to enable inlay hints
-				},
-				-- Enable this to enable the builtin LSP code lenses on Neovim.
-				-- Be aware that you also will need to properly configure your LSP server to
-				-- provide the code lenses.
-				codelens = {
-					enabled = false,
-				},
-				-- Enable this to enable the builtin LSP folding on Neovim.
-				-- Be aware that you also will need to properly configure your LSP server to
-				-- provide the folds.
-				folds = {
-					enabled = true,
-				},
-				-- add any global capabilities here
-				capabilities = {
-					workspace = {
-						fileOperations = {
-							didRename = true,
-							willRename = true,
-						},
-					},
-				},
-				-- options for vim.lsp.buf.format
-				-- `bufnr` and `filter` is handled by the LazyVim formatter,
-				-- but can be also overridden when specified
-				format = {
-					formatting_options = nil,
-					timeout_ms = nil,
-				},
-				-- LSP Server Settings
-				---@alias lazyvim.lsp.Config vim.lsp.Config|{mason?:boolean, enabled?:boolean}
-				---@type table<string, lazyvim.lsp.Config|boolean>
-				servers = {
-					stylua = { enabled = false },
-					lua_ls = {
-						-- mason = false, -- set to false if you don't want this server to be installed with mason
-						-- Use this to add any additional keymaps
-						-- for specific lsp servers
-						-- ---@type LazyKeysSpec[]
-						-- keys = {},
-						settings = {
-							Lua = {
-								workspace = {
-									checkThirdParty = false,
-								},
-								codeLens = {
-									enable = true,
-								},
-								completion = {
-									callSnippet = "Replace",
-								},
-								doc = {
-									privateName = { "^_" },
-								},
-								hint = {
-									enable = true,
-									setType = false,
-									paramType = true,
-									paramName = "Disable",
-									semicolon = "Disable",
-									arrayIndex = "Disable",
-								},
-							},
-						},
-					},
-				},
-				-- you can do any additional lsp server setup here
-				-- return true if you don't want this server to be setup with lspconfig
-				---@type table<string, fun(server:string, opts: vim.lsp.Config):boolean?>
-				setup = {
-					-- example to setup with typescript.nvim
-					-- tsserver = function(_, opts)
-					--   require("typescript").setup({ server = opts })
-					--   return true
-					-- end,
-					-- Specify * to use this function as a fallback for any server
-					-- ["*"] = function(server, opts) end,
-				},
-			}
-			return ret
-		end,
-		---@param opts PluginLspOpts
-		config = vim.schedule_wrap(function(_, opts)
-			-- setup autoformat
-			LazyVim.format.register(LazyVim.lsp.formatter())
-
-			-- setup keymaps
-			LazyVim.lsp.on_attach(function(client, buffer)
-				require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
-			end)
-
-			LazyVim.lsp.setup()
-			LazyVim.lsp.on_dynamic_capability(require("lazyvim.plugins.lsp.keymaps").on_attach)
-
-			-- inlay hints
-			if opts.inlay_hints.enabled then
-				LazyVim.lsp.on_supports_method("textDocument/inlayHint", function(client, buffer)
-					if
-						vim.api.nvim_buf_is_valid(buffer)
-						and vim.bo[buffer].buftype == ""
-						and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
-					then
-						vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
-					end
-				end)
-			end
-
-			-- folds
-			if opts.folds.enabled then
-				LazyVim.lsp.on_supports_method("textDocument/foldingRange", function(client, buffer)
-					if LazyVim.set_default("foldmethod", "expr") then
-						LazyVim.set_default("foldexpr", "v:lua.vim.lsp.foldexpr()")
-					end
-				end)
-			end
-
-			-- code lens
-			if opts.codelens.enabled and vim.lsp.codelens then
-				LazyVim.lsp.on_supports_method("textDocument/codeLens", function(client, buffer)
-					vim.lsp.codelens.refresh()
-					vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-						buffer = buffer,
-						callback = vim.lsp.codelens.refresh,
-					})
-				end)
-			end
-
-			-- diagnostics
-			if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-				opts.diagnostics.virtual_text.prefix = function(diagnostic)
-					local icons = LazyVim.config.icons.diagnostics
-					for d, icon in pairs(icons) do
-						if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-							return icon
-						end
-					end
-					return "●"
-				end
-			end
-			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
-
-			if opts.capabilities then
-				vim.lsp.config("*", { capabilities = opts.capabilities })
-			end
-
-			-- get all the servers that are available through mason-lspconfig
-			local have_mason = LazyVim.has("mason-lspconfig.nvim")
-			local mason_all = have_mason
-					and vim.tbl_keys(require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package)
-				or {} --[[ @as string[] ]]
-			local mason_exclude = {} ---@type string[]
-
-			---@return boolean? exclude automatic setup
-			local function configure(server)
-				local sopts = opts.servers[server]
-				sopts = sopts == true and {} or (not sopts) and { enabled = false } or sopts --[[@as lazyvim.lsp.Config]]
-
-				if sopts.enabled == false then
-					mason_exclude[#mason_exclude + 1] = server
-					return
-				end
-
-				local use_mason = sopts.mason ~= false and vim.tbl_contains(mason_all, server)
-				local setup = opts.setup[server] or opts.setup["*"]
-				if setup and setup(server, sopts) then
-					mason_exclude[#mason_exclude + 1] = server
-				else
-					vim.lsp.config(server, sopts) -- configure the server
-					if not use_mason then
-						vim.lsp.enable(server)
-					end
-				end
-				return use_mason
-			end
-
-			local install = vim.tbl_filter(configure, vim.tbl_keys(opts.servers))
-			if have_mason then
-				require("mason-lspconfig").setup({
-					ensure_installed = vim.list_extend(
-						install,
-						LazyVim.opts("mason-lspconfig.nvim").ensure_installed or {}
-					),
-					automatic_enable = { exclude = mason_exclude },
-				})
-			end
-		end),
+	"saghen/blink.cmp",
+	version = not vim.g.lazyvim_blink_main and "*",
+	build = vim.g.lazyvim_blink_main and "cargo build --release",
+	opts_extend = {
+		"sources.completion.enabled_providers",
+		"sources.compat",
+		"sources.default",
 	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		branch = "main",
-		version = false, -- last release is way too old and doesn't work on Windows
-		build = function()
-			local TS = require("nvim-treesitter")
-			if not TS.get_installed then
-				LazyVim.error("Please restart Neovim and run `:TSUpdate` to use the `nvim-treesitter` **main** branch.")
-				return
-			end
-			LazyVim.treesitter.ensure_treesitter_cli(function()
-				TS.update(nil, { summary = true })
-			end)
-		end,
-		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-		event = { "LazyFile", "VeryLazy" },
-		cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
-		opts_extend = { "ensure_installed" },
-		---@class lazyvim.TSConfig: TSConfig
-		opts = {
-			-- LazyVim config for treesitter
-			indent = { enable = true },
-			highlight = { enable = true },
-			folds = { enable = true },
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"javascript",
-				"jsdoc",
-				"json",
-				"jsonc",
-				"lua",
-				"luadoc",
-				"luap",
-				"markdown",
-				"markdown_inline",
-				"printf",
-				"python",
-				"query",
-				"regex",
-				"toml",
-				"tsx",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"xml",
-				"yaml",
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		-- add blink.compat to dependencies
+		{
+			"saghen/blink.compat",
+			optional = true, -- make optional so it's only enabled if any extras need it
+			opts = {},
+			version = not vim.g.lazyvim_blink_main and "*",
+		},
+	},
+	event = { "InsertEnter", "CmdlineEnter" },
+
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
+	opts = {
+		snippets = {
+			preset = "default",
+		},
+
+		appearance = {
+			-- sets the fallback highlight groups to nvim-cmp's highlight groups
+			-- useful for when your theme doesn't support blink.cmp
+			-- will be removed in a future release, assuming themes add support
+			use_nvim_cmp_as_default = false,
+			-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			-- adjusts spacing to ensure icons are aligned
+			nerd_font_variant = "mono",
+		},
+
+		completion = {
+			accept = {
+				-- experimental auto-brackets support
+				auto_brackets = {
+					enabled = true,
+				},
+			},
+			menu = {
+				draw = {
+					treesitter = { "lsp" },
+				},
+			},
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 200,
+			},
+			ghost_text = {
+				enabled = vim.g.ai_cmp,
 			},
 		},
-		---@param opts lazyvim.TSConfig
-		config = function(_, opts)
-			local TS = require("nvim-treesitter")
 
-			setmetatable(require("nvim-treesitter.install"), {
-				__newindex = function(_, k)
-					if k == "compilers" then
-						vim.schedule(function()
-							LazyVim.error({
-								"Setting custom compilers for `nvim-treesitter` is no longer supported.",
-								"",
-								"For more info, see:",
-								"- [compilers](https://docs.rs/cc/latest/cc/#compile-time-requirements)",
-							})
-						end)
-					end
-				end,
-			})
+		-- experimental signature help support
+		-- signature = { enabled = true },
 
-			-- some quick sanity checks
-			if not TS.get_installed then
-				return LazyVim.error("Please use `:Lazy` and update `nvim-treesitter`")
-			elseif type(opts.ensure_installed) ~= "table" then
-				return LazyVim.error("`nvim-treesitter` opts.ensure_installed must be a table")
-			end
-
-			-- setup treesitter
-			TS.setup(opts)
-			LazyVim.treesitter.get_installed(true) -- initialize the installed langs
-
-			-- install missing parsers
-			local install = vim.tbl_filter(function(lang)
-				return not LazyVim.treesitter.have(lang)
-			end, opts.ensure_installed or {})
-			if #install > 0 then
-				LazyVim.treesitter.ensure_treesitter_cli(function()
-					TS.install(install, { summary = true }):await(function()
-						LazyVim.treesitter.get_installed(true) -- refresh the installed langs
-					end)
-				end)
-			end
-
-			vim.api.nvim_create_autocmd("FileType", {
-				group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
-				callback = function(ev)
-					if not LazyVim.treesitter.have(ev.match) then
-						return
-					end
-
-					-- highlighting
-					if vim.tbl_get(opts, "highlight", "enable") ~= false then
-						pcall(vim.treesitter.start)
-					end
-
-					-- indents
-					if
-						vim.tbl_get(opts, "indent", "enable") ~= false and LazyVim.treesitter.have(ev.match, "indents")
-					then
-						LazyVim.set_default("indentexpr", "v:lua.LazyVim.treesitter.indentexpr()")
-					end
-
-					-- folds
-					if vim.tbl_get(opts, "folds", "enable") ~= false and LazyVim.treesitter.have(ev.match, "folds") then
-						if LazyVim.set_default("foldmethod", "expr") then
-							LazyVim.set_default("foldexpr", "v:lua.LazyVim.treesitter.foldexpr()")
-						end
-					end
-				end,
-			})
-		end,
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		version = false, -- last release is way too old
-		event = "InsertEnter",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
+		sources = {
+			-- adding any nvim-cmp sources here will enable them
+			-- with blink.compat
+			compat = {},
+			default = { "lsp", "path", "snippets", "buffer" },
 		},
-		-- Not all LSP servers add brackets when completing a function.
-		-- To better deal with this, LazyVim adds a custom option to cmp,
-		-- that you can configure. For example:
-		--
-		-- ```lua
-		-- opts = {
-		--   auto_brackets = { "python" }
-		-- }
-		-- ```
-		opts = function()
-			-- Register nvim-cmp lsp capabilities
-			vim.lsp.config("*", { capabilities = require("cmp_nvim_lsp").default_capabilities() })
 
-			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-			local cmp = require("cmp")
-			local defaults = require("cmp.config.default")()
-			local auto_select = true
-			return {
-				auto_brackets = {}, -- configure any filetype to auto add brackets
-				completion = {
-					completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
-				},
-				preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
-				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = LazyVim.cmp.confirm({ select = auto_select }),
-					["<C-y>"] = LazyVim.cmp.confirm({ select = true }),
-					-- ["<S-CR>"] = LazyVim.cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					-- ["<C-CR>"] = function(fallback)
-					-- 	cmp.abort()
-					-- 	fallback()
-					-- end,
-					["<tab>"] = function(fallback)
-						return LazyVim.cmp.map({ "snippet_forward", "ai_nes", "ai_accept" }, fallback)()
-					end,
-				}),
-				sources = cmp.config.sources({
-					{ name = "lazydev" },
-					{ name = "nvim_lsp" },
-					{ name = "path" },
-				}, {
-					{ name = "buffer" },
-				}),
-				formatting = {
-					format = function(entry, item)
-						local icons = LazyVim.config.icons.kinds
-						if icons[item.kind] then
-							item.kind = icons[item.kind] .. item.kind
-						end
-
-						local widths = {
-							abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-							menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
-						}
-
-						for key, width in pairs(widths) do
-							if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
-								item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
-							end
-						end
-
-						return item
+		cmdline = {
+			enabled = true,
+			keymap = {
+				preset = "cmdline",
+				["<Right>"] = false,
+				["<Left>"] = false,
+			},
+			completion = {
+				list = { selection = { preselect = false } },
+				menu = {
+					auto_show = function(ctx)
+						return vim.fn.getcmdtype() == ":"
 					end,
 				},
-				experimental = {
-					-- only show ghost text when we show ai completions
-					ghost_text = vim.g.ai_cmp and {
-						hl_group = "CmpGhostText",
-					} or false,
-				},
-				sorting = defaults.sorting,
-			}
-		end,
-		main = "lazyvim.util.cmp",
+				ghost_text = { enabled = true },
+			},
+		},
+
+		keymap = {
+			preset = "default",
+			["<C-y>"] = { "select_and_accept" },
+		},
 	},
+	---@param opts blink.cmp.Config | { sources: { compat: string[] } }
+	config = function(_, opts)
+		if opts.snippets and opts.snippets.preset == "default" then
+			opts.snippets.expand = LazyVim.cmp.expand
+		end
+		-- setup compat sources
+		local enabled = opts.sources.default
+		for _, source in ipairs(opts.sources.compat or {}) do
+			opts.sources.providers[source] = vim.tbl_deep_extend(
+				"force",
+				{ name = source, module = "blink.compat.source" },
+				opts.sources.providers[source] or {}
+			)
+			if type(enabled) == "table" and not vim.tbl_contains(enabled, source) then
+				table.insert(enabled, source)
+			end
+		end
+
+		-- add ai_accept to <Tab> key
+		if not opts.keymap["<Tab>"] then
+			if opts.keymap.preset == "super-tab" then -- super-tab
+				opts.keymap["<Tab>"] = {
+					require("blink.cmp.keymap.presets").get("super-tab")["<Tab>"][1],
+					LazyVim.cmp.map({ "snippet_forward", "ai_nes", "ai_accept" }),
+					"fallback",
+				}
+			else -- other presets
+				opts.keymap["<Tab>"] = {
+					LazyVim.cmp.map({ "snippet_forward", "ai_nes", "ai_accept" }),
+					"fallback",
+				}
+			end
+		end
+
+		-- Unset custom prop to pass blink.cmp validation
+		opts.sources.compat = nil
+
+		-- check if we need to override symbol kinds
+		for _, provider in pairs(opts.sources.providers or {}) do
+			---@cast provider blink.cmp.SourceProviderConfig|{kind?:string}
+			if provider.kind then
+				local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+				local kind_idx = #CompletionItemKind + 1
+
+				CompletionItemKind[kind_idx] = provider.kind
+				---@diagnostic disable-next-line: no-unknown
+				CompletionItemKind[provider.kind] = kind_idx
+
+				---@type fun(ctx: blink.cmp.Context, items: blink.cmp.CompletionItem[]): blink.cmp.CompletionItem[]
+				local transform_items = provider.transform_items
+				---@param ctx blink.cmp.Context
+				---@param items blink.cmp.CompletionItem[]
+				provider.transform_items = function(ctx, items)
+					items = transform_items and transform_items(ctx, items) or items
+					for _, item in ipairs(items) do
+						item.kind = kind_idx or item.kind
+						item.kind_icon = LazyVim.config.icons.kinds[item.kind_name] or item.kind_icon or nil
+					end
+					return items
+				end
+
+				-- Unset custom prop to pass blink.cmp validation
+				provider.kind = nil
+			end
+		end
+
+		require("blink.cmp").setup(opts)
+	end,
 }
