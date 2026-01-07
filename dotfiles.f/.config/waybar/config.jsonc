@@ -1,0 +1,35 @@
+{
+  "style": "~/.config/waybar/style.css",
+  
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+  
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/weather",
+    "custom/updates",
+    "custom/cava"
+  ],
+  
+  "modules-center": [
+		"custom/notification",
+		"clock"
+  ],
+  
+  "modules-right": [
+		"memory",
+		"cpu",
+		"temperature",
+    "battery",
+    "hyprland/language",
+    "keyboard-state",
+    "backlight",
+    "pulseaudio",
+    "network",
+    "custom/vpn",
+    "tray"
+  ],
+
+  "include": "~/.config/waybar/modules.jsonc"
+}
