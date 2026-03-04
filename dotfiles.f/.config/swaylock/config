@@ -1,0 +1,15 @@
+daemonize
+screenshots
+effect-blur=7x5
+clock
+indicator
+indicator-radius=120
+indicator-thickness=10
+ring-color=88c0d0
+key-hl-color=81a1c1
+line-color=00000000
+inside-color=2e3440cc
+separator-color=00000000
+text-color=e5e9f0
+grace=2
+fade-in=0.2

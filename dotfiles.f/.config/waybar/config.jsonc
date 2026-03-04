@@ -6,7 +6,8 @@
   "height": 20,
   
   "modules-left": [
-    "hyprland/workspaces",
+		"sway/workspaces",
+		"hyprland/workspaces",
     "custom/weather",
     "custom/cava"
   ],

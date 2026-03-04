@@ -6,13 +6,25 @@
     "tooltip": false
   },
 
+  // Workspaces (sway)
+  "sway/workspaces": {
+  "on-scroll-up": "swaymsg workspace prev",
+  "on-scroll-down": "swaymsg workspace next",
+  "on-click": "activate",
+  "active-only": false,
+  "all-outputs": false,
+  "format": "{name}",
+  "persistent-workspaces": {
+    "*": 5
+  }
+},
   // Workspaces (Hyprland)
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
     "on-click": "activate",
     "active-only": false,
-    "all-outputs": true,
+    "all-outputs": false,
     "format": "{}",
     "format-icons": {
       "urgent": "",
@@ -94,7 +106,7 @@
 
   // Audio
   "pulseaudio": {
-    "scroll-step": 1,
+    "scroll-step": 2,
     "format": "{icon} {volume: >3}%",
     "format-bluetooth": "{icon} {volume: >3}%",
     "format-muted": " muted",
@@ -108,8 +120,8 @@
       "default": ["", ""]
     },
     "on-click": "pavucontrol",
-    "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
-    "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
+    // "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
+    // "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
   },
 
   // Network
@@ -139,8 +151,8 @@
 
   // Clock
   "clock": {
-    "format": "  {:%H:%M %a}",
-    "format-alt": "  {:%d/%m/%Y  %H:%M:%S}",
+		"format": "  {:%d/%m/%Y  %H:%M:%S}",
+    "format-alt": "  {:%H:%M %a}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
