@@ -12,7 +12,7 @@ exec --no-startup-id fcitx5
 
 ## OBS Fix/ Screen Capture Fix
 # exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-# 
+
 # exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr &
 # exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
 # Example configuration:
@@ -21,14 +21,10 @@ exec --no-startup-id fcitx5
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 ### Main monitor (DP-1)
-output * adaptive_sync on 
-output * allow_tearing yes
-output * max_render_time off
-
-output DP-1 mode 2560x1440@143.99Hz position 0 0 scale 1
+output DP-1 mode 2560x1440@144Hz position 0 0 adaptive_sync on
 ### Secondary monitor (DP-2) portrait clockwise
 # 2560x1440 becomes 1440x2560 when rotated
-output DP-2 mode 2560x1440@143.99Hz transform 90 position 2560 -720 scale 1
+output DP-2 mode 2560x1440@144Hz transform 90 position 2560 -720
 
 ### Make workspace 1 always open on main monitor
 workspace 1 output DP-1
@@ -205,7 +201,7 @@ set $fileManager nautilus
 		
 # Window Rules 
 		for_window [class="steam.*"] move to workspace game
-		for_window [class="steam_.*"] move to workspace game, floating enabled
+		for_window [class="steam_.*"] move to workspace game, fullscreen enabled
 		for_window [class=".*obsidian.*"] move to workspace notes
 		for_window [class=".*discord.*"] move to workspace chat
 #
@@ -281,11 +277,11 @@ client.placeholder      $surface0  $base     $text     $surface0  $surface0
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+d move scratchpad
+    bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+d scratchpad show
+    bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #

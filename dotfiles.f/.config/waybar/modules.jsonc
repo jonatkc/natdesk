@@ -2,7 +2,7 @@
   // Launcher
   "custom/launcher": {
     "format": "",
-    "on-click": "rofi -show drun",
+    "on-click": "wofi -show drun",
     "tooltip": false
   },
 
@@ -23,7 +23,7 @@
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
     "on-click": "activate",
-    "active-only": false,
+    "active-only": true,
     "all-outputs": false,
     "format": "{}",
     "format-icons": {
@@ -119,11 +119,19 @@
       "car": "",
       "default": ["", ""]
     },
-    "on-click": "pavucontrol",
+  "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+  "on-click-middle": "pavucontrol"
     // "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
     // "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
   },
-
+	// Mic
+	"pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume: >3}%",
+    "format-source-muted": " muted",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-right": "pavucontrol"
+	},
   // Network
   "network": {
     "format": "{ifname}",
@@ -151,7 +159,7 @@
 
   // Clock
   "clock": {
-		"format": "  {:%d/%m/%Y  %H:%M:%S}",
+		"format": "  {:%m/%d/%Y  %H:%M:%S}",
     "format-alt": "  {:%H:%M %a}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {

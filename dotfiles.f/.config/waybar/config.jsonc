@@ -23,6 +23,7 @@
     "battery",
     "backlight",
     "pulseaudio",
+		"pulseaudio#microphone",
     "network",
     "tray"
   ],

@@ -208,11 +208,26 @@ tooltip label {
 	padding: 8px 12px;
 }
 
-#pulseaudio.muted {
-	color: @subtext0;
+#pulseaudio.microphone {
+	background: @background-primary;
+	color: @sky;
+	border-left: 4px solid @yellow;
+	border-radius: 0 12px 12px 0;
+	margin: 6px 2px 6px 0;
+	padding: 8px 12px;
+}
+
+/* speakers muted */
+#pulseaudio:not(.microphone).muted {
+	color: @crimson;
 	border-left: 4px solid @subtext0;
 }
 
+/* microphone muted */
+#pulseaudio.microphone.muted {
+	color: @crimson;
+	border-left: 4px solid @subtext0;
+}
 /* -----------------------------------------------------------------------------
 * Network
 * -------------------------------------------------------------------------- */
