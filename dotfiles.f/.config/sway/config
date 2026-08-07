@@ -20,18 +20,18 @@ exec --no-startup-id fcitx5
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-### Main monitor (DP-1)
+### Main monitor (HDMI-A-1)
 output * adaptive_sync on 
 output * allow_tearing yes
 output * max_render_time off
 
-output DP-1 mode 2560x1440@143.99Hz position 0 0 scale 1
+output HDMI-A-1 mode 2560x1440@144Hz position 0 0 scale 1
 ### Secondary monitor (DP-2) portrait clockwise
 # 2560x1440 becomes 1440x2560 when rotated
 output DP-2 mode 2560x1440@143.99Hz transform 90 position 2560 -720 scale 1
 
 ### Make workspace 1 always open on main monitor
-workspace 1 output DP-1
+workspace 1 output HDMI-A-1
 
 ## Start up app
 # exec_always --no-startup-id waybar
@@ -152,12 +152,12 @@ set $fileManager nautilus
 # Workspaces:
 #
 # Assign workspace 1 to the first monitor
-		workspace 1 output DP-1
-		workspace 2 output DP-1
-		workspace 3 output DP-1
-		workspace 4 output DP-1
-		workspace 5 output DP-1
-		workspace game output DP-1
+		workspace 1 output HDMI-A-1
+		workspace 2 output HDMI-A-1
+		workspace 3 output HDMI-A-1
+		workspace 4 output HDMI-A-1
+		workspace 5 output HDMI-A-1
+		workspace game output HDMI-A-1
 
 # Assign workspace 6 to the second monitor
 		workspace 6 output DP-2

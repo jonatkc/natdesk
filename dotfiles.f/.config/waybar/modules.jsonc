@@ -20,8 +20,8 @@
 },
   // Workspaces (Hyprland)
   "hyprland/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace r-1",
-    "on-scroll-down": "hyprctl dispatch workspace r+1",
+		"on-scroll-up": "hyprctl eval 'hl.dispatch(hl.dsp.workspace(\"r-1\"))'",
+    "on-scroll-down": "hyprctl eval 'hl.dispatch(hl.dsp.workspace(\"r+1\"))'"
     "on-click": "activate",
     "active-only": true,
     "all-outputs": false,
