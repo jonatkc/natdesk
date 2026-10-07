@@ -62,7 +62,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("easyeffects")
 	hl.exec_cmd("fcitx5")
 	hl.exec_cmd("swaybg -m fill -i ~/Nextcloud/Jonathan/bg/GDWP-792-4K-No-Logo.jpg")
-	hl.exec_cmd("waybar & hyprpaper")
+	hl.exec_cmd("hyprpaper")
+	hl.exec_cmd("waybar")
 end)
 
 -------------------------------
